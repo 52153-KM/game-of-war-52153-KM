@@ -16,19 +16,32 @@ namespace GameOfWar
             Suit = suit;
             Rank = rank;
         }
-
         // Overload the > operator to compare two cards by rank
-        public static bool operator >(Card card1, Card card2)
-        {
-            return card1.Rank > card2.Rank;
-        }
-
-        // Overload < operator (required when overloading >)
         public static bool operator >(Card a, Card b) => a is null ? false : b is null ? true : a.Rank > b.Rank;
 
         // Overload the < operator to compare two cards by rank
         public static bool operator <(Card a, Card b) => a is null ? b is not null : b is null ? false : a.Rank < b.Rank;
 
         // Create a public string method RankString that returns a string representation of this card's rank, 2-10 and Jack, Queen, King, Ace
+        public string RankString()
+        {
+            switch (Rank)
+            {
+                case 0: return "2";
+                case 1: return "3";
+                case 2: return "4";
+                case 3: return "5";
+                case 4: return "6";
+                case 5: return "7";
+                case 6: return "8";
+                case 7: return "9";
+                case 8: return "10";
+                case 9: return "Jack";
+                case 10: return "Queen";
+                case 11: return "King";
+                case 12: return "Ace";
+                default: throw new InvalidOperationException("Invalid rank value.");
+            }
+        }
     }
 }
