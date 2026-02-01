@@ -16,6 +16,13 @@ namespace GameOfWar
             Suit = suit;
             Rank = rank;
         }
+
+        // Note: The lines of code used to overload an operator, are not explained in any of the course material.
+        // I freely and fully admit to having used AI assistance to write these two operator overloads.
+        // I understand if points are subtracted for this.
+        // I just wish to express my frustration that one of the assignment requriements 
+        // is something i have never learned, or been instructed to use previously
+
         // Overload the > operator to compare two cards by rank
         public static bool operator >(Card a, Card b) => a is null ? false : b is null ? true : a.Rank > b.Rank;
 
@@ -25,23 +32,26 @@ namespace GameOfWar
         // Create a public string method RankString that returns a string representation of this card's rank, 2-10 and Jack, Queen, King, Ace
         public string RankString()
         {
-            switch (Rank)
+            // Note: Lambda operators were also not covered in the course material.
+            // These I learned about from external research.
+            return Rank switch
             {
-                case 0: return "2";
-                case 1: return "3";
-                case 2: return "4";
-                case 3: return "5";
-                case 4: return "6";
-                case 5: return "7";
-                case 6: return "8";
-                case 7: return "9";
-                case 8: return "10";
-                case 9: return "Jack";
-                case 10: return "Queen";
-                case 11: return "King";
-                case 12: return "Ace";
-                default: throw new InvalidOperationException("Invalid rank value.");
-            }
+                0 => "2",
+                1 => "3",
+                2 => "4",
+                3 => "5",
+                4 => "6",
+                5 => "7",
+                6 => "8",
+                7 => "9",
+                8 => "10",
+                9 => "Jack",
+                10 => "Queen",
+                11 => "King",
+                12 => "Ace",
+                _ => throw new InvalidOperationException("Invalid rank value.")
+            };
         }
+
     }
 }
